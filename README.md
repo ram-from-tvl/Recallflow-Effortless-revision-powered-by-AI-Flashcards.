@@ -2,9 +2,9 @@
 
 A sophisticated web application that leverages artificial intelligence to generate educational flashcards automatically. Built with Flask, Firebase, and Groq API for intelligent study material creation.
 
-## Demo Video
+[## Demo Video
 
-https://github.com/ram-from-tvl/Recallflow-Effortless-revision-powered-by-AI-Flashcards./blob/main/demo_video.mp4
+https://github.com/ram-from-tvl/Recallflow-Effortless-revision-powered-by-AI-Flashcards./blob/main/demo_video.mp4](https://github.com/ram-from-tvl/Recallflow-Effortless-revision-powered-by-AI-Flashcards./blob/main/demo_video.mp4)
 
 ## Features
 
