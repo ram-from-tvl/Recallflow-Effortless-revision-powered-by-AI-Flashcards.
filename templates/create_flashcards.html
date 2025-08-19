@@ -1,0 +1,202 @@
+{% extends "base.html" %}
+
+{% block title %}Create Flashcards - AI Flashcard Creator{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <!-- Header -->
+        <div class="text-center mb-4">
+            <h1 class="h2 mb-2">
+                <i class="fas fa-magic me-2 text-primary"></i>Create AI Flashcards
+            </h1>
+            <p class="text-muted">Enter any topic and watch AI generate comprehensive flashcards for you</p>
+        </div>
+
+        <!-- Main Form -->
+        <div class="card shadow">
+            <div class="card-body p-4">
+                <form method="POST" id="createForm">
+                    <div class="mb-4">
+                        <label for="topic" class="form-label h5">What would you like to study?</label>
+                        <textarea class="form-control form-control-lg" 
+                                  id="topic" 
+                                  name="topic" 
+                                  rows="3" 
+                                  required 
+                                  placeholder="e.g., The Water Cycle, World War II, Python Programming Basics, Photosynthesis, etc."
+                                  maxlength="200"></textarea>
+                        <div class="form-text">
+                            <span id="charCount">0</span>/200 characters
+                        </div>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <label class="form-label">Number of Flashcards</label>
+                            <select class="form-select" name="num_cards" disabled>
+                                <option value="8" selected>8 cards (Recommended)</option>
+                            </select>
+                            <div class="form-text">Currently fixed at 8 cards per set</div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Difficulty Level</label>
+                            <select class="form-select" name="difficulty" disabled>
+                                <option value="balanced" selected>Balanced (Mixed difficulty)</option>
+                            </select>
+                            <div class="form-text">Auto-adjusted based on topic</div>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary btn-lg px-5" id="generateBtn">
+                            <i class="fas fa-magic me-2"></i>Generate Flashcards
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Loading State -->
+        <div id="loadingCard" class="card shadow mt-4" style="display: none;">
+            <div class="card-body text-center py-5">
+                <div class="spinner-border text-primary mb-3" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <h5>Generating Your Flashcards...</h5>
+                <p class="text-muted mb-0">Our AI is creating personalized flashcards for your topic. This may take a few seconds.</p>
+            </div>
+        </div>
+
+        <!-- Example Topics -->
+        <div class="mt-5">
+            <h4 class="mb-3">Need inspiration? Try these topics:</h4>
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <div class="card border-0 bg-light">
+                        <div class="card-body p-3">
+                            <h6 class="card-title text-primary">
+                                <i class="fas fa-flask me-2"></i>Science
+                            </h6>
+                            <div class="d-flex flex-wrap gap-1">
+                                <button class="btn btn-sm btn-outline-secondary topic-btn" data-topic="The Solar System">Solar System</button>
+                                <button class="btn btn-sm btn-outline-secondary topic-btn" data-topic="Photosynthesis">Photosynthesis</button>
+                                <button class="btn btn-sm btn-outline-secondary topic-btn" data-topic="DNA Structure">DNA Structure</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="card border-0 bg-light">
+                        <div class="card-body p-3">
+                            <h6 class="card-title text-success">
+                                <i class="fas fa-landmark me-2"></i>History
+                            </h6>
+                            <div class="d-flex flex-wrap gap-1">
+                                <button class="btn btn-sm btn-outline-secondary topic-btn" data-topic="Ancient Rome">Ancient Rome</button>
+                                <button class="btn btn-sm btn-outline-secondary topic-btn" data-topic="World War II">World War II</button>
+                                <button class="btn btn-sm btn-outline-secondary topic-btn" data-topic="Renaissance Period">Renaissance</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="card border-0 bg-light">
+                        <div class="card-body p-3">
+                            <h6 class="card-title text-info">
+                                <i class="fas fa-code me-2"></i>Technology
+                            </h6>
+                            <div class="d-flex flex-wrap gap-1">
+                                <button class="btn btn-sm btn-outline-secondary topic-btn" data-topic="Python Programming Basics">Python Basics</button>
+                                <button class="btn btn-sm btn-outline-secondary topic-btn" data-topic="Machine Learning Concepts">Machine Learning</button>
+                                <button class="btn btn-sm btn-outline-secondary topic-btn" data-topic="Web Development">Web Development</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="card border-0 bg-light">
+                        <div class="card-body p-3">
+                            <h6 class="card-title text-warning">
+                                <i class="fas fa-calculator me-2"></i>Mathematics
+                            </h6>
+                            <div class="d-flex flex-wrap gap-1">
+                                <button class="btn btn-sm btn-outline-secondary topic-btn" data-topic="Calculus Fundamentals">Calculus</button>
+                                <button class="btn btn-sm btn-outline-secondary topic-btn" data-topic="Algebra Basics">Algebra</button>
+                                <button class="btn btn-sm btn-outline-secondary topic-btn" data-topic="Geometry Principles">Geometry</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Character counter
+const topicTextarea = document.getElementById('topic');
+const charCount = document.getElementById('charCount');
+
+topicTextarea.addEventListener('input', function() {
+    const count = this.value.length;
+    charCount.textContent = count;
+    
+    if (count > 180) {
+        charCount.className = 'text-warning';
+    } else if (count > 150) {
+        charCount.className = 'text-info';
+    } else {
+        charCount.className = 'text-muted';
+    }
+});
+
+// Example topic buttons
+document.querySelectorAll('.topic-btn').forEach(button => {
+    button.addEventListener('click', function() {
+        const topic = this.getAttribute('data-topic');
+        topicTextarea.value = topic;
+        topicTextarea.focus();
+        
+        // Update character count
+        charCount.textContent = topic.length;
+    });
+});
+
+// Form submission with loading state
+document.getElementById('createForm').addEventListener('submit', function(e) {
+    const topic = topicTextarea.value.trim();
+    
+    if (!topic) {
+        e.preventDefault();
+        alert('Please enter a topic for your flashcards');
+        return;
+    }
+    
+    if (topic.length < 3) {
+        e.preventDefault();
+        alert('Topic must be at least 3 characters long');
+        return;
+    }
+    
+    // Show loading state
+    document.getElementById('generateBtn').disabled = true;
+    document.getElementById('generateBtn').innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Generating...';
+    document.getElementById('loadingCard').style.display = 'block';
+    
+    // Scroll to loading card
+    document.getElementById('loadingCard').scrollIntoView({ behavior: 'smooth' });
+});
+
+// Auto-resize textarea
+topicTextarea.addEventListener('input', function() {
+    this.style.height = 'auto';
+    this.style.height = this.scrollHeight + 'px';
+});
+</script>
+{% endblock %}

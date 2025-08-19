@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome - AI Flashcard Creator{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-10">
+        <!-- Hero Section -->
+        <div class="text-center mb-5">
+            <h1 class="display-4 text-primary mb-3">
+                <i class="fas fa-brain me-3"></i>AI Flashcard Creator
+            </h1>
+            <p class="lead text-muted mb-4">
+                Transform any topic into interactive flashcards using the power of AI. 
+                Perfect for students, professionals, and lifelong learners.
+            </p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="{{ url_for('register') }}" class="btn btn-primary btn-lg">
+                    <i class="fas fa-rocket me-2"></i>Get Started Free
+                </a>
+                <a href="{{ url_for('login') }}" class="btn btn-outline-primary btn-lg">
+                    <i class="fas fa-sign-in-alt me-2"></i>Sign In
+                </a>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="row g-4 mb-5">
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <div class="feature-icon bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                            <i class="fas fa-magic fa-lg"></i>
+                        </div>
+                        <h5 class="card-title">AI-Powered Generation</h5>
+                        <p class="card-text text-muted">
+                            Simply enter a topic and let our advanced AI generate comprehensive flashcards with questions and answers.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <div class="feature-icon bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                            <i class="fas fa-cloud fa-lg"></i>
+                        </div>
+                        <h5 class="card-title">Cloud Storage</h5>
+                        <p class="card-text text-muted">
+                            Your flashcards are securely stored in the cloud. Access them from anywhere, anytime, on any device.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <div class="feature-icon bg-info text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                            <i class="fas fa-lightning-bolt fa-lg"></i>
+                        </div>
+                        <h5 class="card-title">Lightning Fast</h5>
+                        <p class="card-text text-muted">
+                            Generate complete flashcard sets in seconds using the ultra-fast Groq API for instant learning.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- How It Works Section -->
+        <div class="text-center mb-5">
+            <h2 class="mb-4">How It Works</h2>
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="step-number bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 50px; height: 50px;">
+                        1
+                    </div>
+                    <h6>Sign Up</h6>
+                    <p class="text-muted small">Create your free account to get started</p>
+                </div>
+                <div class="col-md-3">
+                    <div class="step-number bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 50px; height: 50px;">
+                        2
+                    </div>
+                    <h6>Enter Topic</h6>
+                    <p class="text-muted small">Type any subject you want to study</p>
+                </div>
+                <div class="col-md-3">
+                    <div class="step-number bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 50px; height: 50px;">
+                        3
+                    </div>
+                    <h6>AI Generates</h6>
+                    <p class="text-muted small">Watch as AI creates custom flashcards</p>
+                </div>
+                <div class="col-md-3">
+                    <div class="step-number bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 50px; height: 50px;">
+                        4
+                    </div>
+                    <h6>Study & Learn</h6>
+                    <p class="text-muted small">Review your flashcards and master the topic</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sample Topics -->
+        <div class="text-center mb-5">
+            <h3 class="mb-4">Popular Study Topics</h3>
+            <div class="d-flex flex-wrap justify-content-center gap-2">
+                <span class="badge bg-light text-dark border px-3 py-2">Biology</span>
+                <span class="badge bg-light text-dark border px-3 py-2">History</span>
+                <span class="badge bg-light text-dark border px-3 py-2">Programming</span>
+                <span class="badge bg-light text-dark border px-3 py-2">Mathematics</span>
+                <span class="badge bg-light text-dark border px-3 py-2">Physics</span>
+                <span class="badge bg-light text-dark border px-3 py-2">Chemistry</span>
+                <span class="badge bg-light text-dark border px-3 py-2">Language Learning</span>
+                <span class="badge bg-light text-dark border px-3 py-2">Geography</span>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="text-center">
+            <div class="bg-primary text-white rounded p-5">
+                <h3 class="mb-3">Ready to revolutionize your studying?</h3>
+                <p class="mb-4">Join thousands of learners who are already using AI to create better flashcards.</p>
+                <a href="{{ url_for('register') }}" class="btn btn-light btn-lg">
+                    <i class="fas fa-rocket me-2"></i>Start Creating Flashcards
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

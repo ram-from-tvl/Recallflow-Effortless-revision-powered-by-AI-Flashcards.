@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block title %}Login - AI Flashcard Creator{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-4">
+        <div class="card shadow">
+            <div class="card-body p-4">
+                <div class="text-center mb-4">
+                    <h2 class="card-title">Welcome Back</h2>
+                    <p class="text-muted">Sign in to your account</p>
+                </div>
+
+                <form method="POST" id="loginForm">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" 
+                               class="form-control" 
+                               id="email" 
+                               name="email" 
+                               required 
+                               placeholder="Enter your email">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" 
+                               class="form-control" 
+                               id="password" 
+                               name="password" 
+                               required 
+                               placeholder="Enter your password">
+                    </div>
+
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="remember">
+                        <label class="form-check-label" for="remember">
+                            Remember me
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100 mb-3">
+                        <i class="fas fa-sign-in-alt me-2"></i>Sign In
+                    </button>
+                </form>
+
+                <div class="text-center">
+                    <p class="mb-2">
+                        <a href="#" class="text-decoration-none text-muted">Forgot your password?</a>
+                    </p>
+                    <p class="mb-0">Don't have an account? 
+                        <a href="{{ url_for('register') }}" class="text-decoration-none">Create one</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Demo Account Info -->
+        <div class="mt-4">
+            <div class="alert alert-info">
+                <h6 class="alert-heading"><i class="fas fa-info-circle me-2"></i>Demo Mode</h6>
+                <p class="mb-0 small">
+                    This is a demo application. Simply enter any email and password to continue.
+                    Your data will be stored securely in Firebase Firestore.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.getElementById('loginForm').addEventListener('submit', function(e) {
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    
+    if (!email || !password) {
+        e.preventDefault();
+        alert('Please fill in all fields');
+    }
+});
+</script>
+{% endblock %}

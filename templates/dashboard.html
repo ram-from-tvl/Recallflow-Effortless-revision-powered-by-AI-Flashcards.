@@ -1,0 +1,161 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - AI Flashcard Creator{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <!-- Welcome Header -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h1 class="h3 mb-1">Welcome back, {{ user.display_name }}!</h1>
+                <p class="text-muted mb-0">Ready to create some flashcards today?</p>
+            </div>
+            <a href="{{ url_for('create_flashcards') }}" class="btn btn-primary">
+                <i class="fas fa-plus me-2"></i>Create New Flashcards
+            </a>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="row g-3 mb-4">
+            <div class="col-md-4">
+                <div class="card bg-primary text-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h6 class="card-title text-white-50">Total Sets</h6>
+                                <h3 class="mb-0">{{ flashcard_sets|length }}</h3>
+                            </div>
+                            <div class="align-self-center">
+                                <i class="fas fa-layer-group fa-2x opacity-50"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card bg-success text-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h6 class="card-title text-white-50">Total Cards</h6>
+                                <h3 class="mb-0">
+                                    {% set total_cards = flashcard_sets | sum(attribute='card_count') %}
+                                    {{ total_cards or 0 }}
+                                </h3>
+                            </div>
+                            <div class="align-self-center">
+                                <i class="fas fa-cards-blank fa-2x opacity-50"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card bg-info text-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h6 class="card-title text-white-50">This Week</h6>
+                                <h3 class="mb-0">
+                                    {% set recent_count = flashcard_sets | selectattr('created_at') | list | length %}
+                                    {{ recent_count }}
+                                </h3>
+                            </div>
+                            <div class="align-self-center">
+                                <i class="fas fa-calendar-week fa-2x opacity-50"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="row g-3 mb-4">
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-magic fa-3x text-primary mb-3"></i>
+                        <h5 class="card-title">Create Flashcards</h5>
+                        <p class="card-text text-muted">Generate AI-powered flashcards on any topic in seconds</p>
+                        <a href="{{ url_for('create_flashcards') }}" class="btn btn-primary">
+                            <i class="fas fa-plus me-2"></i>Get Started
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-layer-group fa-3x text-success mb-3"></i>
+                        <h5 class="card-title">Browse Collection</h5>
+                        <p class="card-text text-muted">View and study all your flashcard sets</p>
+                        <a href="{{ url_for('all_flashcards') }}" class="btn btn-success">
+                            <i class="fas fa-eye me-2"></i>View All
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Flashcard Sets -->
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">
+                    <i class="fas fa-clock me-2"></i>Recent Flashcard Sets
+                </h5>
+                {% if flashcard_sets|length > 5 %}
+                    <a href="{{ url_for('all_flashcards') }}" class="btn btn-sm btn-outline-primary">View All</a>
+                {% endif %}
+            </div>
+            <div class="card-body">
+                {% if flashcard_sets %}
+                    <div class="row g-3">
+                        {% for set in flashcard_sets %}
+                            <div class="col-md-6 col-lg-4">
+                                <div class="card border">
+                                    <div class="card-body">
+                                        <h6 class="card-title text-truncate" title="{{ set.topic }}">
+                                            {{ set.topic }}
+                                        </h6>
+                                        <p class="card-text text-muted small mb-2">
+                                            <i class="fas fa-cards-blank me-1"></i>{{ set.card_count }} cards
+                                        </p>
+                                        <p class="card-text text-muted small mb-3">
+                                            <i class="fas fa-calendar me-1"></i>
+                                            {% if set.created_at %}
+                                                {{ set.created_at.strftime('%b %d, %Y') }}
+                                            {% else %}
+                                                Recent
+                                            {% endif %}
+                                        </p>
+                                        <div class="d-flex gap-2">
+                                            <a href="{{ url_for('view_flashcards', set_id=set.id) }}" 
+                                               class="btn btn-sm btn-primary flex-fill">
+                                                <i class="fas fa-eye me-1"></i>Study
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="text-center py-4">
+                        <i class="fas fa-layer-group fa-3x text-muted mb-3"></i>
+                        <h5 class="text-muted">No flashcard sets yet</h5>
+                        <p class="text-muted mb-3">Create your first set of AI-generated flashcards!</p>
+                        <a href="{{ url_for('create_flashcards') }}" class="btn btn-primary">
+                            <i class="fas fa-plus me-2"></i>Create Your First Set
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
