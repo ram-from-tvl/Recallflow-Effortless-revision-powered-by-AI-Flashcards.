@@ -1,10 +1,15 @@
 # Recallflow - AI-Powered Flashcard Creator
 
-A sophisticated web application that leverages artificial intelligence to generate educational flashcards automatically. Built with Flask, Firebase, and Groq API for intelligent study material creation.
+A web application that leverages artificial intelligence to generate educational flashcards automatically. Built with Flask, Firebase, and Groq API for intelligent study material creation.
 
-[## Demo Video
+## Demo Video
 
-https://github.com/ram-from-tvl/Recallflow-Effortless-revision-powered-by-AI-Flashcards./blob/main/demo_video.mp4](https://github.com/ram-from-tvl/Recallflow-Effortless-revision-powered-by-AI-Flashcards./blob/main/demo_video.mp4)
+<div align="center">
+  <video width="80%" controls autoplay muted>
+    <source src="https://github.com/ram-from-tvl/Recallflow-Effortless-revision-powered-by-AI-Flashcards./raw/main/demo_video.mp4" type="video/mp4">
+    <p>Your browser does not support HTML5 video. <a href="https://github.com/ram-from-tvl/Recallflow-Effortless-revision-powered-by-AI-Flashcards./raw/main/demo_video.mp4">Click here to download the video</a>.</p>
+  </video>
+</div>
 
 ## Features
 
