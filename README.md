@@ -4,19 +4,18 @@ A web application that leverages artificial intelligence to generate educational
 
 ## Demo Video
 
-<div align="center">
-  <video width="80%" controls autoplay muted>
-    <source src="https://github.com/ram-from-tvl/Recallflow-Effortless-revision-powered-by-AI-Flashcards./raw/main/demo_video.mp4" type="video/mp4">
-    <p>Your browser does not support HTML5 video. <a href="https://github.com/ram-from-tvl/Recallflow-Effortless-revision-powered-by-AI-Flashcards./raw/main/demo_video.mp4">Click here to download the video</a>.</p>
-  </video>
-</div>
+https://github.com/user-attachments/assets/83cba9b4-4b47-465a-8105-2f5abd93f3c8
 
 ## Features
 
 - **AI-Powered Content Generation**: Automatically create comprehensive flashcards on any topic using advanced language models
 - **Secure User Authentication**: Register and login with Firebase Authentication
 - **Cloud Data Persistence**: Store and retrieve flashcards using Firebase Firestore
-- **Interactive Study Interface**: Engaging flashcard experience with smooth flip animations
+- **Interactive Study Interface**: Engaging flashca
+
+
+
+rd experience with smooth flip animations
 - **Responsive Design**: Optimized for desktop, tablet, and mobile devices
 - **Smart Organization**: Search, filter, and organize flashcard collections
 - **Real-time Updates**: Instant synchronization across devices
