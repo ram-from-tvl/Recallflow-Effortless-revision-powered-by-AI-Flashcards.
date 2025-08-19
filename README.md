@@ -3,10 +3,9 @@
 A web application that leverages artificial intelligence to generate educational flashcards automatically. Built with Flask, Firebase, and Groq API for intelligent study material creation.
 
 ## Demo Video
+https://github.com/user-attachments/assets/c702ea25-30fd-4d46-83fa-1ec1f0173aa9
 
-https://github.com/user-attachments/assets/83cba9b4-4b47-465a-8105-2f5abd93f3c8
-
-## Features
+##Features
 
 - **AI-Powered Content Generation**: Automatically create comprehensive flashcards on any topic using advanced language models
 - **Secure User Authentication**: Register and login with Firebase Authentication
