@@ -4,9 +4,7 @@ A sophisticated web application that leverages artificial intelligence to genera
 
 ## Demo Video
 
-https://github.com/user-attachments/demo_video.mp4
-
-> **Note**: Replace the above link with your actual demo video. You can upload an MP4 file to your GitHub repository and link it here, or use a YouTube/Vimeo link.
+https://github.com/ram-from-tvl/Recallflow-Effortless-revision-powered-by-AI-Flashcards./blob/main/demo_video.mp4
 
 ## Features
 
