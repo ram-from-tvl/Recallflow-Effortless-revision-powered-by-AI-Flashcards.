@@ -1,91 +1,57 @@
-<<<<<<< HEAD
-# AI-Powered Flashcard Creator
+# Recallflow - AI-Powered Flashcard Creator
 
-A full-stack Python web application that uses AI to generate educational flashcards. Built with Flask, Firebase, and the Groq API.
+A sophisticated web application that leverages artificial intelligence to generate educational flashcards automatically. Built with Flask, Firebase, and Groq API for intelligent study material creation.
+
+## Demo Video
+
+https://github.com/user-attachments/demo_video.mp4
+
+> **Note**: Replace the above link with your actual demo video. You can upload an MP4 file to your GitHub repository and link it here, or use a YouTube/Vimeo link.
 
 ## Features
 
-- **User Authentication**: Secure sign-up and sign-in using Firebase Authentication
-- **AI-Powered Flashcard Generation**: Generate flashcards on any topic using Groq's high-speed LLM inference
-- **Data Persistence**: Save and retrieve flashcards using Firebase Firestore
-- **Clean Web Interface**: Simple, responsive web interface built with Flask and Bootstrap
+- **AI-Powered Content Generation**: Automatically create comprehensive flashcards on any topic using advanced language models
+- **Secure User Authentication**: Register and login with Firebase Authentication
+- **Cloud Data Persistence**: Store and retrieve flashcards using Firebase Firestore
+- **Interactive Study Interface**: Engaging flashcard experience with smooth flip animations
+- **Responsive Design**: Optimized for desktop, tablet, and mobile devices
+- **Smart Organization**: Search, filter, and organize flashcard collections
+- **Real-time Updates**: Instant synchronization across devices
 
 ## Technology Stack
 
-- **Frontend**: Python Flask with Jinja2 templates and Bootstrap CSS
-- **Backend**: Python Flask with Firebase Admin SDK
-- **Database**: Firebase Firestore
-- **Authentication**: Firebase Authentication
-- **AI Integration**: Groq API for LLM inference
-- **Deployment**: Cloud-ready (Google Cloud Run, Railway, etc.)
+- **Backend**: Python Flask framework with modular architecture
+- **Frontend**: Bootstrap 5 with custom CSS and JavaScript
+- **Database**: Firebase Firestore for scalable NoSQL storage
+- **Authentication**: Firebase Authentication with email/password
+- **AI Integration**: Groq API for high-speed language model inference
+- **Deployment**: Cloud-ready with environment-based configuration
 
 ## Project Structure
 
 ```
-ai-flashcard-creator/
+recallflow/
 ├── app.py                 # Main Flask application
-├── config.py              # Configuration settings
+├── config.py              # Configuration management
 ├── requirements.txt       # Python dependencies
-├── firebase_key.json      # Firebase service account key (not included)
-├── .env                   # Environment variables (not included)
-├── .gitignore            # Git ignore file
-├── templates/            # HTML templates
-│   ├── base.html
-│   ├── login.html
-│   ├── register.html
-│   ├── dashboard.html
-│   ├── create_flashcards.html
-│   └── view_flashcards.html
-├── static/               # Static files
-│   ├── css/
-│   │   └── style.css
-│   └── js/
-│       └── main.js
+├── .env.example           # Environment variables template
+├── .gitignore            # Git ignore rules
+├── templates/            # Jinja2 HTML templates
+│   ├── base.html         # Base template with navigation
+│   ├── index.html        # Landing page
+│   ├── login.html        # User authentication
+│   ├── register.html     # User registration
+│   ├── dashboard.html    # User dashboard
+│   ├── create_flashcards.html # Flashcard creation
+│   └── view_flashcards.html   # Study interface
+├── static/               # Static assets
+│   ├── css/style.css     # Custom styles
+│   └── js/main.js        # JavaScript functionality
 └── utils/                # Utility modules
-    ├── firebase_config.py
-    ├── groq_client.py
-    └── auth.py
+    ├── firebase_config.py # Firebase integration
+    ├── groq_client.py     # AI API client
+    └── auth.py            # Authentication helpers
 ```
-
-## Prerequisites
-
-1. Python 3.8+
-2. Firebase project with Authentication and Firestore enabled
-3. Groq API key
-4. Firebase service account key
-
-## Setup Instructions
-
-1. **Clone and navigate to the project**:
-   ```bash
-   cd ai-flashcard-creator
-   ```
-
-2. **Create a virtual environment**:
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
-
-3. **Install dependencies**:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. **Set up Firebase**:
-   - Create a Firebase project at https://console.firebase.google.com
-   - Enable Authentication (Email/Password)
-   - Enable Firestore Database
-   - Generate a service account key and save as `firebase_key.json`
-
-5. **Get Groq API key**:
-   - Sign up at https://console.groq.com
-   - Get your API key
-
-5. **Configure environment variables**:
-   - Copy `.env.example` to `.env`
-   - Add your Groq API key and Firebase configuration:
-   ```
    GROQ_API_KEY=your_groq_api_key_here
    FLASK_SECRET_KEY=your_secret_key_here
    FIREBASE_PROJECT_ID=your_firebase_project_id
@@ -145,7 +111,3 @@ This application can be deployed to various platforms:
 ## License
 
 This project is licensed under the MIT License.
-=======
-# Recallflow-Effortless-revision-powered-by-AI-Flashcards.
-AI-powered flashcard generator with Flask, Firebase, and Groq API. Intelligent study tool with automated content creation.
->>>>>>> 5ef9d5b18cbf06a42f496411bee3dd310113e18d
