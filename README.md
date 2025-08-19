@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # AI-Powered Flashcard Creator
 
 A full-stack Python web application that uses AI to generate educational flashcards. Built with Flask, Firebase, and the Groq API.
@@ -144,3 +145,7 @@ This application can be deployed to various platforms:
 ## License
 
 This project is licensed under the MIT License.
+=======
+# Recallflow-Effortless-revision-powered-by-AI-Flashcards.
+AI-powered flashcard generator with Flask, Firebase, and Groq API. Intelligent study tool with automated content creation.
+>>>>>>> 5ef9d5b18cbf06a42f496411bee3dd310113e18d
